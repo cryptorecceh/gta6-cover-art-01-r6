@@ -467,6 +467,17 @@ function syncUI() {
   if (redoBtn) redoBtn.disabled = redoStack.length === 0;
 }
 
+const SCENES = {
+  trio: { layout: 'Trio', grade: 'Sunset', caption: 'SUNSET HEIST' },
+  editor: { layout: 'Trio', grade: 'Sunset', caption: 'SUNSET HEIST', size: { w: 1280, h: 720 } },
+  frame: { layout: 'Frame', grade: 'Ocean Drive', caption: 'OCEAN DRIVE' },
+  banner: { layout: 'Banner', grade: 'Pastel', caption: 'PASTEL PALMS' },
+  quad: { layout: 'Quad', grade: 'Neon Nights', caption: 'NEON SQUAD' },
+  solo: { layout: 'Solo', grade: 'Noir', caption: 'LONE WOLF' },
+  duo: { layout: 'Duo', grade: 'Ocean Drive', caption: 'DOUBLE TROUBLE' },
+  strip: { layout: 'Strip', grade: 'Pastel', caption: 'PALM STRIP' },
+};
+
 // Init: bangun kontrol sekali, lalu render saat DOM siap.
 if (typeof document !== 'undefined') {
   const init = () => {
@@ -709,16 +720,8 @@ function wireKeyboard() {
 }
 
 // Scene dari ?shot=: layout + grade + caption (+ ukuran khusus editor).
-const SCENES = {
-  trio: { layout: 'Trio', grade: 'Sunset', caption: 'SUNSET HEIST' },
-  editor: { layout: 'Trio', grade: 'Sunset', caption: 'SUNSET HEIST', size: { w: 1280, h: 720 } },
-  frame: { layout: 'Frame', grade: 'Ocean Drive', caption: 'OCEAN DRIVE' },
-  banner: { layout: 'Banner', grade: 'Pastel', caption: 'PASTEL PALMS' },
-  quad: { layout: 'Quad', grade: 'Neon Nights', caption: 'NEON SQUAD' },
-  solo: { layout: 'Solo', grade: 'Noir', caption: 'LONE WOLF' },
-  duo: { layout: 'Duo', grade: 'Ocean Drive', caption: 'DOUBLE TROUBLE' },
-  strip: { layout: 'Strip', grade: 'Pastel', caption: 'PALM STRIP' },
-};
+// Ditaruh di ATAS, sebelum init() — applyScene() memakainya saat boot;
+// const di bawah init kena TDZ (ReferenceError) dan mematikan render pertama.
 
 function applyScene() {
   if (typeof window === 'undefined') return;
