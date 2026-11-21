@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Studio — GTA 6 Cover Art</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23140b1e'/%3E%3Ccircle cx='16' cy='14' r='8' fill='%23ff7a1a'/%3E%3Crect x='4' y='22' width='24' height='2' fill='%23ff2e88'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Vice City Cover Studio</h1>
+  <p>Turn your photos + a caption into GTA&nbsp;6-style cover art. Offline, in your browser.</p>
+</header>
+<main class="studio">
+  <section class="stage-wrap">
+    <canvas id="stage" width="1080" height="1080"></canvas>
+    <div id="status" role="status">Ready.</div>
+  </section>
+  <aside class="controls">
+    <section>
+      <h2>Layout</h2>
+      <div id="layout-bar" class="bar"></div>
+    </section>
+    <section>
+      <h2>Grade</h2>
+      <div id="grade-bar" class="bar"></div>
+    </section>
+    <section>
+      <h2>Caption</h2>
+      <input id="caption-input" type="text" value="SUNSET HEIST" maxlength="48" autocomplete="off">
+      <label>Title size <input id="title-size" type="range" min="0.7" max="1.3" step="0.05" value="1"></label>
+      <label>Tracking <input id="tracking" type="range" min="-2" max="12" step="0.5" value="0"></label>
+    </section>
+    <section>
+      <h2>Panels</h2>
+      <div id="panel-bar"></div>
+      <label class="file-label">Add photos
+        <input id="photo-input" type="file" accept="image/*" multiple>
+      </label>
+      <p class="hint">Or drag &amp; drop a photo onto a panel. Click a panel to select it, drag to pan, scroll to zoom.</p>
+    </section>
+    <section>
+      <h2>Export</h2>
+      <label>Size <select id="size-select"></select></label>
+      <div class="actions">
+        <button id="shuffle-btn" type="button">Shuffle</button>
+        <button id="undo-btn" type="button">Undo</button>
+        <button id="redo-btn" type="button">Redo</button>
+        <button id="export-btn" type="button" class="primary">Export cover</button>
+        <button id="export-all-btn" type="button">Export all sizes</button>
+      </div>
+    </section>
+  </aside>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
